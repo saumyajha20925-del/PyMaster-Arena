@@ -1,0 +1,3 @@
+{% extends "base.html" %}{% block content %}
+<section class="card result"><div class="resulticon">{% if percentage>=70 %}🎉{% else %}💪{% endif %}</div><span class="eyebrow">QUIZ COMPLETED</span><h1>Your result is in!</h1><div class="score">{{ score }}<small> / {{ total }}</small></div><div class="meter"><div style="width:{{ percentage }}%"></div></div><h2>{{ percentage }}%</h2><p class="muted">{% if percentage>=70 %}Excellent work! Keep it up.{% else %}Good effort! Practice again to improve.{% endif %}</p><a class="button" href="{{ url_for('quiz_start') }}">Try another quiz</a> <a class="secondary" href="{{ url_for('dashboard') }}">Dashboard</a></section>
+{% endblock %}

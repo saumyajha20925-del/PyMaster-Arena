@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block content %}
+<section class="auth card"><div class="logo">🐍</div><h1>Welcome back!</h1><p class="muted">Sign in to continue your Python journey.</p>
+<form method="post"><label>Username</label><input name="username" required placeholder="Enter username"><label>Password</label><input name="password" type="password" required placeholder="Enter password"><button>Login</button></form>
+<p>New here? <a href="{{ url_for('register') }}">Create account</a></p></section>{% endblock %}

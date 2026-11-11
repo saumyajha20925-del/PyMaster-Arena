@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PyMaster Arena</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body><nav><a class="brand" href="/">🐍 PyMaster Arena</a><div>
+{% if session.get('username') %}<span class="navuser">Hi, {{ session.username }}</span><a href="{{ url_for('dashboard') }}">Dashboard</a><a href="{{ url_for('logout') }}">Logout</a>{% endif %}
+</div></nav><main>
+{% with messages = get_flashed_messages() %}{% if messages %}<div class="flash">{% for message in messages %}{{ message }}<br>{% endfor %}</div>{% endif %}{% endwith %}
+{% block content %}{% endblock %}</main><footer>Practice • Learn • Improve</footer></body></html>

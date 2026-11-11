@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block content %}
+<section class="hero"><div><span class="eyebrow">PYTHON PRACTICE</span><h1>Level up your<br><em>Python skills.</em></h1><p>Learn through quick quizzes and track your progress.</p><a class="button" href="{{ url_for('quiz_start') }}">Start Quiz →</a></div><div class="heroicon">🐍</div></section>
+<div class="stats"><div class="card stat"><small>QUIZZES COMPLETED</small><h2>{{ total_attempts }}</h2></div><div class="card stat"><small>QUESTION BANK</small><h2>20 <span>questions</span></h2></div><div class="card stat"><small>QUESTIONS / QUIZ</small><h2>10 <span>random</span></h2></div></div>
+<section class="card"><h2>Recent activity</h2>{% if scores %}<div class="scorelist">{% for s in scores %}<div><span>Quiz attempt</span><strong>{{ s.score }}/{{ s.total }}</strong><small>{{ s.completed_at }}</small></div>{% endfor %}</div>{% else %}<p class="muted">No quizzes yet. Start your first one!</p>{% endif %}</section>
+{% endblock %}
