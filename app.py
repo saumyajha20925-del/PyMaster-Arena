@@ -124,11 +124,15 @@ def quiz_start():
     with connect() as con:
         done = {r["question_index"] for r in con.execute(
             "SELECT DISTINCT question_index FROM attempts WHERE user_id=? AND correct=1", (uid,))}
+     
     available = [i for i in range(len(QUESTIONS)) if i not in done]
-        if not available:
+
+    if not available:
+        with connect() as con:
             con.execute("DELETE FROM attempts WHERE user_id=?", (uid,))
-            available = list(range(len(QUESTIONS)))
-            flash("Great! You completed the question bank. Your practice cycle has been reset.")
+        available = list(range(len(QUESTIONS)))
+        flash("Great! You completed the question bank. Your practice cycle has been reset.")
+
     chosen = random.sample(available, min(10, len(available)))
     session["quiz_questions"] = chosen
     session["quiz_answers"] = {}
