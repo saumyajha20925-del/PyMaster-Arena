@@ -2,9 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3, random, time
 from functools import wraps
-
+import os
 app = Flask(__name__)
-app.secret_key = "change-this-secret-key-before-deployment"
+app.secret_key = os.environ.get("SECRET_KEY", "local-development-key")
 DB = "quiz.db"
 
 QUESTIONS = [
@@ -178,4 +178,4 @@ def quiz_result():
                            percentage=round(score/len(chosen)*100))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
